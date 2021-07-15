@@ -6,6 +6,13 @@
 /* You can add global styles to this file, and also import other style files */
 
 
+html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: none;
+    text-shadow: 1px 1px 1px rgb(0 0 0 / 0%);
+}
+
 body {
   background-color: rgba(#ffff00, 0.5);
 }

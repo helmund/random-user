@@ -32,6 +32,9 @@ export class AppComponent {
   currentPrefixNumber: any = '';
   currentPhoneNumber: any = '';
   currentUserImage: any = '';
+  currentMonth: any = '';
+  currentYear: any = '';
+  currentDay: any = '';
 
   constructor() {
 
@@ -43,6 +46,10 @@ export class AppComponent {
 
     this.currentStreetNumber = this.randomNumber(200);
     this.currentPhoneNumber = this.randomNumber(9999999);
+
+    this.currentDay = this.randomNumberBetween(1, 27);
+    this.currentMonth = this.randomNumber(12);
+    this.currentYear = this.randomNumberBetween(1947, 1990);
 
     if (this.currentGender == 'female') {
       this.currentFirstname = this.random(this.femaleNames);
@@ -64,12 +71,30 @@ export class AppComponent {
     return randomInteger;
   }
 
+  randomNumberBetween(min: any, max: any) {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
   changeGender() {
     if (this.currentGender == "female") {
       this.currentGender = "male"
     } else {
       this.currentGender = "female"
     }
+  }
+
+  copyImageUrl(e: any) {
+    const str = this.currentUserImage;
+    const el = document.createElement('textarea')
+    el.value = str
+    el.setAttribute('readonly', '')
+    el.style.position = 'absolute'
+    el.style.left = '-9999px'
+    document.body.appendChild(el)
+    el.select()
+    document.execCommand('copy')
+    document.body.removeChild(el)
+    e.preventDefault();
   }
 
 
